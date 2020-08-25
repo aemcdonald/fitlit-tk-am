@@ -14,11 +14,9 @@ class UsersRepository {
       let allUserSteps = this.users.reduce((totalSteps, user) => {
        return totalSteps += user.dailyStepGoal
      }, 0);
-
      return allUserSteps / this.users.length;
    }
 }
-
 
 
 if (typeof module !== 'undefined') {

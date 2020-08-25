@@ -4,7 +4,6 @@ const expect = chai.expect;
 const userData = require('../data/users-sub');
 const UsersRepository = require('../src/users-repository');
 
-
 describe('UsersRepository', () => {
   let usersRepository;
   beforeEach(() => {
@@ -13,7 +12,6 @@ describe('UsersRepository', () => {
 
   it('Should return user data based on ID', () => {
     let user1 = usersRepository.returnUserData(1);
-
     expect(user1).to.deep.equal(userData[0]);
   });
 

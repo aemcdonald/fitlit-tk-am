@@ -180,3 +180,7 @@ const sleepData = [
     "sleepQuality": 1.8
   }
 ];
+
+if (typeof module !== 'undefined') {
+  module.exports = sleepData;
+};

@@ -1,7 +1,13 @@
 const sleepData = require('../data/sleep');
 
+class Sleep {
+  constructor() {
+
+  }
+}
 
 
 
-
-module.exports = Sleep;
+if (typeof module !== 'undefined') {
+  module.exports = Sleep;
+}

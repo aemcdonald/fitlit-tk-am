@@ -16,10 +16,16 @@ class Hydration {
       return totalOunces += user.numOunces
     }, 0);
     return allOunces / this.hydrationData.length;
-
-
+  }
+  fluidOuncesOnDay(id, date) {
+    let userData = this.getUser(id);
+    let userOunces = userData.find(user => {
+      return user.date === date;
+    });
+    return userOunces.numOunces;
   }
 }
+
 
 //    moment("2019/06/15").subtract(7, 'days').calendar();
 

@@ -20,4 +20,9 @@ describe('Hydration', () => {
     let user1Avg = hydration.averageFluidOunces(1);
     expect(user1Avg).to.equal(59.4);
   });
+
+  it('Should calculatea user\'s fluid ounces consumed for a specific day', () => {
+    let user1Ounces = hydration.fluidOuncesOnDay(1, "2019/06/15");
+    expect(user1Ounces).to.equal(37);
+  });
 });

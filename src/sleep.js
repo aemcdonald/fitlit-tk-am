@@ -23,6 +23,20 @@ class Sleep {
     }, 0);
     return +parseFloat((totalSleepQuality / userData.length).toFixed(2));
   }
+  dailyHoursSlept(id, date) {
+    let userData = this.getUser(id);
+    let currentUser = userData.find(user => {
+      return user.date === date;
+    });
+    return currentUser.hoursSlept;
+  }
+  dailySleepQuality(id, date) {
+    let userData = this.getUser(id);
+    let currentUser = userData.find(user => {
+      return user.date === date;
+    });
+    return currentUser.sleepQuality;
+  }
 }
 
 

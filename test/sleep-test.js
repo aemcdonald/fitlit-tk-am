@@ -17,7 +17,12 @@ describe('Sleep', () => {
   });
 
   it('Should return a user\'s average number of hours slept per day for all time', () => {
-    let user1Avg = Math.round(sleep.averageSleepDay(1));
-    expect(user1Avg).to.equal(8);
+    let user1Avg = sleep.averageSleepDay(1);
+    expect(user1Avg).to.deep.equal(7.92);
   });
+
+  it('should return a user\'s all time average sleep quality', () => {
+    let user1Avg = sleep.averageSleepQuality(1);
+    expect(user1Avg).to.deep.equal(2.41);
+  })
 });

@@ -15,4 +15,9 @@ describe('Sleep', () => {
     let user1 = sleep.getUser(1);
     expect(user1[0]).to.equal(sleepData[0]);
   });
+
+  it('Should return a user\'s average number of hours slept per day for all time', () => {
+    let user1Avg = Math.round(sleep.averageSleepDay(1));
+    expect(user1Avg).to.equal(8);
+  });
 });

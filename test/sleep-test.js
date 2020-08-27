@@ -41,4 +41,10 @@ describe('Sleep', () => {
     let week = [8, 10.4, 10.7, 9.3, 7.8, 7, 7.8];
     expect(user1).to.deep.equal(week);
   });
+
+  it('Should return sleep quality per day over a given week', () => {
+    let user1 = sleep.sleepQualityPerWeek(1, "2019/06/23");
+    let week = [2.6, 3.1, 1.2, 1.2, 4.2, 3, 1.5];
+    expect(user1).to.deep.equal(week);
+  });
 });

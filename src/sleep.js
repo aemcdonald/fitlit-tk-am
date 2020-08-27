@@ -12,9 +12,16 @@ class Sleep {
   averageSleepDay(id) {
     let userData = this.getUser(id);
     let totalSleep = userData.reduce((totalHrsSlept, user) => {
-      return totalHrsSlept += user.hoursSlept
+      return totalHrsSlept += user.hoursSlept;
     }, 0);
-    return totalSleep / userData.length;
+    return +parseFloat((totalSleep / userData.length).toFixed(2));
+  }
+  averageSleepQuality(id) {
+    let userData = this.getUser(id);
+    let totalSleepQuality = userData.reduce((allQuality, user) => {
+      return allQuality += user.sleepQuality;
+    }, 0);
+    return +parseFloat((totalSleepQuality / userData.length).toFixed(2));
   }
 }
 

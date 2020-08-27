@@ -9,6 +9,13 @@ class Sleep {
       return user.userID === id;
     });
   }
+  averageSleepDay(id) {
+    let userData = this.getUser(id);
+    let totalSleep = userData.reduce((totalHrsSlept, user) => {
+      return totalHrsSlept += user.hoursSlept
+    }, 0);
+    return totalSleep / userData.length;
+  }
 }
 
 

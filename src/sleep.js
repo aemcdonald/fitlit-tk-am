@@ -48,6 +48,19 @@ class Sleep {
       return night.hoursSlept;
     });
   }
+  sleepQualityPerWeek(id, date) {
+    let userData = this.getUser(id);
+    let currentUser = userData.find(user => {
+      return user.date === date;
+    });
+    let index = userData.indexOf(currentUser);
+    let week = userData.slice(index - 6, index + 1);
+    return week.map(night => {
+      return night.sleepQuality;
+    });
+  }
+
+
   // for a user (id parameter),  and needs a date parameter.
   //run getUser to create an array of single user data.
   // use indexOf to get var index of array element object that corresponds to date argument.

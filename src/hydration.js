@@ -24,13 +24,14 @@ class Hydration {
     });
     return userOunces.numOunces;
   }
+  fluidOuncesWeek(id, date) {
+    let userData = this.getUser(id);
+    let userWeekData = userData.slice(-7);
+    return userWeekData.map(day => {
+      return day.numOunces;
+    });
+  }
 }
-
-
-//    moment("2019/06/15").subtract(7, 'days').calendar();
-
-
-
 
 if (typeof module !== 'undefined') {
   module.exports = Hydration;

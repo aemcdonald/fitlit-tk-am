@@ -22,7 +22,7 @@ describe('Sleep', () => {
   });
 
   it('Should return a user\'s all time average sleep quality', () => {
-    let user1Avg = sleep.averageSleepQuality(1);
+    let user1Avg = sleep.userAvgSleepQuality(1);
     expect(user1Avg).to.equal(2.41);
   });
 
@@ -47,4 +47,9 @@ describe('Sleep', () => {
     let week = [2.6, 3.1, 1.2, 1.2, 4.2, 3, 1.5];
     expect(user1).to.deep.equal(week);
   });
+
+  it('Should calculate the average sleep quality for all users', () => {
+    let avg = sleep.allAvgSleepQuality();
+    expect(avg).to.equal(2.98);
+  })
 });

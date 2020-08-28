@@ -47,4 +47,9 @@ describe('Sleep', () => {
     let week = [2.6, 3.1, 1.2, 1.2, 4.2, 3, 1.5];
     expect(user1).to.deep.equal(week);
   });
+
+  it('Should calculate the average sleep quality for all users', () => {
+    let avg = sleep.avgSleepQuality();
+    expect(avg).to.equal(2.98);
+  });
 });

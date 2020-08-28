@@ -59,6 +59,12 @@ class Sleep {
       return night.sleepQuality;
     });
   }
+  avgSleepQuality() {
+    let allSleepQuality = this.sleepData.reduce((total, object) => {
+      return total += object.sleepQuality;
+    }, 0)
+    return allSleepQuality / this.sleepData.length;
+  }
 
 
   // for a user (id parameter),  and needs a date parameter.

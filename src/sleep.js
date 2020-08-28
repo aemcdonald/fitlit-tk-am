@@ -9,6 +9,18 @@ class Sleep {
       return user.userID === id;
     });
   }
+  getObjectByDate(id, date) {
+    let userData = this.getUser(id);
+    return userData.find(user => {
+      return user.date === date;
+    });
+  }
+  getAnyWeek(id, date) {
+    let userData = this.getUser(id);
+    let currentUser = this.getObjectByDate(id, date);
+    let index = userData.indexOf(currentUser);
+    return userData.slice(index - 6, index + 1);
+  }
   averageSleepDay(id) {
     let userData = this.getUser(id);
     let totalSleep = userData.reduce((totalHrsSlept, user) => {
@@ -24,26 +36,19 @@ class Sleep {
     return +parseFloat((totalSleepQuality / userData.length).toFixed(2));
   }
   dailyHoursSlept(id, date) {
-    let userData = this.getUser(id);
-    let currentUser = userData.find(user => {
-      return user.date === date;
-    });
+    let currentUser = this.getObjectByDate(id, date);
     return currentUser.hoursSlept;
   }
   dailySleepQuality(id, date) {
-    let userData = this.getUser(id);
-    let currentUser = userData.find(user => {
-      return user.date === date;
-    });
+    let currentUser = this.getObjectByDate(id, date);
     return currentUser.sleepQuality;
   }
   dailySleepPerWeek(id, date) {
-    let userData = this.getUser(id);
-    let currentUser = userData.find(user => {
-      return user.date === date;
-    });
-    let index = userData.indexOf(currentUser);
-    let week = userData.slice(index - 6, index + 1);
+    let week = this.getAnyWeek(id, date);
+    // let userData = this.getUser(id);
+    // let currentUser = this.getObjectByDate(id, date);
+    // let index = userData.indexOf(currentUser);
+    // let week = userData.slice(index - 6, index + 1);
     return week.map(night => {
       return night.hoursSlept;
     });

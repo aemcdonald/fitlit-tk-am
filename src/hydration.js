@@ -1,5 +1,4 @@
 const hydrationData = require('../data/hydration');
-const moment = require('moment');
 
 class Hydration {
   constructor(hydrationData) {
@@ -10,6 +9,12 @@ class Hydration {
       return user.userID === id;
     });
   }
+  getObjectByDate(id, date) {
+    let userData = this.getUser(id);
+    return userData.find(user => {
+      return user.date === date;
+    });
+  }
   averageFluidOunces(id) {
     this.getUser(id);
     let allOunces = this.hydrationData.reduce((totalOunces, user) => {
@@ -18,10 +23,7 @@ class Hydration {
     return allOunces / this.hydrationData.length;
   }
   fluidOuncesOnDay(id, date) {
-    let userData = this.getUser(id);
-    let userOunces = userData.find(user => {
-      return user.date === date;
-    });
+    let userOunces = this.getObjectByDate(id, date);
     return userOunces.numOunces;
   }
   fluidOuncesWeek(id, date) {

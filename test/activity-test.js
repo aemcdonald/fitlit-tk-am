@@ -45,4 +45,9 @@ describe('Activity', () => {
     let user2Data = activity.stepGoalReached(2, "2019/06/17");
     expect(user2Data).to.equal(true);
   });
+
+  it('Should determine average stairs climbed on a date for all users', () => {
+    let avgStairs = activity.avgStairsByDate("2019/06/15")
+    expect(avgStairs).to.equal(19.67);
+  });
 });

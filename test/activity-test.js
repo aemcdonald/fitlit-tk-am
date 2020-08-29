@@ -25,4 +25,14 @@ describe('Activity', () => {
     let user1Data = activity.getUserMilesWalked(1, "2019/06/15");
     expect(user1Data).to.equal(2.91);
   });
+
+  it('Should return a user\'s active mintes for a day', () => {
+    let user1Data = activity.getUserMinutes(1, "2019/06/15");
+    expect(user1Data).to.equal(140);
+  });
+
+  it('Should return a user\'s average minutes active for a week', () => {
+    let user1Data = activity.getAvgMinutes(1, "2019/06/21");
+    expect(user1Data).to.equal(171)
+  });
 });

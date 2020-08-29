@@ -47,12 +47,22 @@ describe('Activity', () => {
   });
 
   it('Should determine average stairs climbed on a date for all users', () => {
-    let avgStairs = activity.avgStairsByDate("2019/06/15")
+    let avgStairs = activity.avgStairsByDate("2019/06/15");
     expect(avgStairs).to.equal(19.67);
   });
 
   it('Should determine average steps on a date for all users', () => {
-    let avgSteps = activity.avgStepsByDate("2019/06/15")
+    let avgSteps = activity.avgStepsByDate("2019/06/15");
     expect(avgSteps).to.equal(5091);
+  });
+
+  it('Should determine average minutes active on a date for all users', () => {
+    let avgMinutes = activity.avgMinutesByDate("2019/06/15");
+    expect(avgMinutes).to.equal(131.33);
+  });
+
+  it('Should determine a user\'s total number of steps for all time', () => {
+    let user1TotalSteps = activity.getUserTotalSteps(1);
+    expect(user1TotalSteps).to.equal(90032);
   });
 });

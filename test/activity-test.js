@@ -8,7 +8,7 @@ const Activity = require('../src/activity');
 describe('Activity', () => {
   let activity;
   beforeEach(() => {
-    activity = new Activity(activityData);
+    activity = new Activity(activityData, userData);
   });
 
   it('Should return single user based on ID', () => {

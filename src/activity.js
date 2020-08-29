@@ -58,6 +58,15 @@
     }, 0);
     return +parseFloat((allStairs / dateData.length).toFixed(2));
   }
+  avgStepsByDate(date) {
+    let dateData = this.activityData.filter(user => {
+      return user.date === date;
+    });
+    let allSteps = dateData.reduce((total, user) => {
+      return total += user.numSteps;
+    }, 0);
+    return +parseFloat((allSteps / dateData.length).toFixed(2));
+  }
 }
 
 

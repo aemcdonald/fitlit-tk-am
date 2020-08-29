@@ -1,6 +1,6 @@
 // const userData = require('../data/users');
 
-class Users {
+class User {
   constructor(userData) {
     this.userData = userData;
   }
@@ -11,5 +11,5 @@ class Users {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = Users;
+  module.exports = User;
 };

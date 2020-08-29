@@ -40,14 +40,23 @@
     let totalMinutes = userWeek.reduce((total, day) => {
       return total += day.minutesActive;
     }, 0);
-    return Math.floor(totalMinutes / userWeek.length)
+    return Math.floor(totalMinutes / userWeek.length);
   }
   stepGoalReached(id, date) {
     let day = this.getObjectByDate(id, date);
     let userInfo = this.userData.find(user => {
       return user.id === id;
     });
-   return day.numSteps >= userInfo.dailyStepGoal ? true : false; 
+   return day.numSteps >= userInfo.dailyStepGoal ? true : false;
+  }
+  avgStairsByDate(date) {
+    let dateData = this.activityData.filter(user => {
+      return user.date === date;
+    });
+    let allStairs = dateData.reduce((total, user) => {
+      return total += user.flightsOfStairs;
+    }, 0);
+    return +parseFloat((allStairs / dateData.length).toFixed(2));
   }
 }
 

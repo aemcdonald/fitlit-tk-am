@@ -17,14 +17,30 @@
       return user.date === date;
     });
   }
+  getAnyWeek(id, date) {
+    let userData = this.getUser(id);
+    let currentUser = this.getObjectByDate(id, date);
+    let index = userData.indexOf(currentUser);
+    return userData.slice(index - 6, index + 1);
+  }
   getUserMilesWalked(id, date) {
     let day = this.getObjectByDate(id, date);
     let userInfo = this.userData.find(user => {
       return user.id === id;
     });
-    console.log(userInfo)
     let totalFeet = userInfo.strideLength * day.numSteps;
     return +parseFloat((totalFeet / 5280).toFixed(2));
+  }
+  getUserMinutes(id, date) {
+    let user = this.getObjectByDate(id, date);
+    return user.minutesActive;
+  }
+  getAvgMinutes(id, date) {
+    let userWeek = this.getAnyWeek(id, date)
+    let totalMinutes = userWeek.reduce((total, day) => {
+      return total += day.minutesActive;
+    }, 0);
+    return Math.floor(totalMinutes / userWeek.length)
   }
 }
 

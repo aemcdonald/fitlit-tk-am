@@ -67,6 +67,21 @@
     }, 0);
     return +parseFloat((allSteps / dateData.length).toFixed(2));
   }
+  avgMinutesByDate(date) {
+    let dateData = this.activityData.filter(user => {
+      return user.date === date;
+    });
+    let allMinutes = dateData.reduce((total, user) => {
+      return total += user.minutesActive;
+    }, 0);
+    return +parseFloat((allMinutes / dateData.length).toFixed(2));
+  }
+  getUserTotalSteps(id) {
+    let userData = this.getUser(id);
+    return userData.reduce((total, user) => {
+      return total += user.numSteps;
+    }, 0);
+  }
 }
 
 

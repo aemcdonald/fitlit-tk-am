@@ -42,6 +42,13 @@
     }, 0);
     return Math.floor(totalMinutes / userWeek.length)
   }
+  stepGoalReached(id, date) {
+    let day = this.getObjectByDate(id, date);
+    let userInfo = this.userData.find(user => {
+      return user.id === id;
+    });
+   return day.numSteps >= userInfo.dailyStepGoal ? true : false; 
+  }
 }
 
 

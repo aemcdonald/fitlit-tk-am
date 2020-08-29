@@ -50,6 +50,26 @@ describe('Sleep', () => {
 
   it('Should calculate the average sleep quality for all users', () => {
     let avg = sleep.allAvgSleepQuality();
-    expect(avg).to.equal(2.98);
-  })
+    expect(avg).to.deep.equal(2.98);
+  });
+
+  it('Should find ther user(s) who slept the most hours on a given day', () => {
+    let winner = sleep.mostHoursSleptByDay("2019/06/17");
+    expect(winner).to.deep.equal([{
+      "userID": 1,
+      "date": "2019/06/17",
+      "hoursSlept": 8,
+      "sleepQuality": 2.6
+    }, {
+      "userID": 3,
+      "date": "2019/06/17",
+      "hoursSlept": 8,
+      "sleepQuality": 4.9
+    }])
+  });
+
+  it('should find the hours slept of a user\'s longest night of sleep', () => {
+    let bestNight = sleep.findLongNightSleep(1);
+    expect(bestNight).to.equal(10.7);
+  });
 });

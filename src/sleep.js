@@ -65,7 +65,28 @@ class Sleep {
     }, 0);
     return allSleepQuality / this.sleepData.length;
   }
+  getGoodSleepers(date) {
 
+  }
+  mostHoursSleptByDay(date) {
+    let dateData = this.sleepData.filter(day => {
+      return day.date === date;
+    });
+    let sorted = dateData.sort((a, b) => {
+      return b.hoursSlept - a.hoursSlept;
+    });
+    let mostHours = sorted.filter(user => {
+      return user.hoursSlept === sorted[0].hoursSlept;
+    });
+    return mostHours;
+  }
+  findLongNightSleep(id) {
+    let userData = this.getUser(id);
+    let longestNight = userData.map(night => {
+      return night.hoursSlept
+    })
+    return Math.max(...longestNight)
+  }
 }
 // for a user (id parameter),  and needs a date parameter.
 //run getUser to create an array of single user data.

@@ -35,4 +35,14 @@ describe('Activity', () => {
     let user1Data = activity.getAvgMinutes(1, "2019/06/21");
     expect(user1Data).to.equal(171)
   });
+
+  it('Should return false if a user has not reached their step goal for a day', () => {
+    let user1Data = activity.stepGoalReached(1, "2019/06/15");
+    expect(user1Data).to.equal(false);
+  });
+
+  it('Should return true if a user has reached their step goal for a day', () => {
+    let user2Data = activity.stepGoalReached(2, "2019/06/17");
+    expect(user2Data).to.equal(true);
+  });
 });

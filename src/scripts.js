@@ -1,8 +1,11 @@
+let randomIndex = Math.floor(Math.random() * (userData.length - 1) + 1);
+
 const usersRepository = new UsersRepository(userData);
-const user = new User(userData);
+const user = new User(userData[randomIndex]);
 const hydration = new Hydration(hydrationData);
 const sleep = new Sleep(sleepData);
 const activity = new Activity(activityData, sleepData);
+const randomID = randomIndex + 1;
 
 const userCard = document.querySelector('.user-card');
 const userGreeting = document.querySelector('.user-greeting');
@@ -13,19 +16,17 @@ const userStrideLength = document.querySelector('.user-strideLength');
 const userDailyStepGoal = document.querySelector('.user-dailyStepGoal');
 const userFriends = document.querySelector('.user-friends');
 
-
-let randomID = Math.floor(Math.random() * (50 - 1) + 1);
 const userProfile = usersRepository.returnUserData(randomID);
-
 
 window.addEventListener('onload', displayUserInfo());
 
+//refactor
 function displayUserInfo() { //need to call this onload
-  userName.innerText = userProfile.name
-  userAddress.innerText = userProfile.address
-  userEmail.innerText = userProfile.email
-  userStrideLength.innerText = userProfile.strideLength
-  userDailyStepGoal.innerText = userProfile.strideLength
-  userDailyStepGoal.innerText = userProfile.dailyStepGoal
-  userFriends.innerText = userProfile.friends
+  userName.innerText = `Name: ${userProfile.name}`;
+  userAddress.innerText = `Address: ${userProfile.address}`;
+  userEmail.innerText = `Email: ${userProfile.email}`;
+  userStrideLength.innerText = `Your Stride Length: ${userProfile.strideLength}`;
+  userDailyStepGoal.innerText = `Your Daily Step Goal: ${userProfile.dailyStepGoal}`;
+  userFriends.innerText = `Friends: ${userProfile.friends}`;// display names, not ids.
 };
+console.log(user);

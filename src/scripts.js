@@ -18,7 +18,10 @@ const userFriends = document.querySelector('.user-friends');
 
 const userProfile = usersRepository.returnUserData(randomID);
 
-window.addEventListener('onload', displayUserInfo());
+window.addEventListener('load', function() {
+  displayUserInfo();
+  displayUserGreeting();
+});
 
 //refactor
 function displayUserInfo() { //need to call this onload
@@ -26,7 +29,11 @@ function displayUserInfo() { //need to call this onload
   userAddress.innerText = `Address: ${userProfile.address}`;
   userEmail.innerText = `Email: ${userProfile.email}`;
   userStrideLength.innerText = `Your Stride Length: ${userProfile.strideLength}`;
-  userDailyStepGoal.innerText = `Your Daily Step Goal: ${userProfile.dailyStepGoal}`;
+  userDailyStepGoal.innerText = `Your Daily Step Goal: ${userProfile.dailyStepGoal}, the average step goal for all users is ${usersRepository.getAverageStepGoal()}.`
+
   userFriends.innerText = `Friends: ${userProfile.friends}`;// display names, not ids.
 };
-console.log(user);
+
+function displayUserGreeting() {
+  userGreeting.innerText = `Hi, ${user.getFirstName()}!`;
+};

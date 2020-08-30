@@ -7,6 +7,7 @@ const sleep = new Sleep(sleepData);
 const activity = new Activity(activityData, sleepData);
 const randomID = randomIndex + 1;
 
+const waterChart = document.getElementById('water-chart').getContext('2d');
 const userCard = document.querySelector('.user-card');
 const userGreeting = document.querySelector('.user-greeting');
 const userName = document.querySelector('.user-name');
@@ -18,6 +19,7 @@ const userFriends = document.querySelector('.user-friends');
 const fluidOzToday = document.querySelector('.fluid-oz-today');
 
 const userProfile = usersRepository.returnUserData(randomID);
+
 
 window.addEventListener('load', function() {
   displayUserInfo();
@@ -36,9 +38,13 @@ function displayUserInfo() { //need to call this onload
   userFriends.innerText = `Friends: ${userProfile.friends}`;// display names, not ids.
 };
 
-function mostRecentDay(data) {
-  let obj = data[data.length - 1];
+function mostRecentDay(dataSet) {
+  let obj = dataSet[dataSet.length - 1];
   return obj.date;
+};
+
+function mostRecentWeek(dataSet) {
+
 }
 
 function displayUserGreeting() {
@@ -47,4 +53,15 @@ function displayUserGreeting() {
 
 function displayWaterToday(id, date) {
   fluidOzToday.innerText = `You have consumed ${hydration.fluidOuncesOnDay(id, date)} ounces today.`
-}
+};
+
+let waterGraph = new Chart(waterChart, {
+  type: 'bar',
+  data: {
+    labels: hydration.getMostRecentWeek(),
+    datasets: [ {
+      data: hydration.fluidOuncesWeek(currentUser.user.id),
+      backgroundColor: []
+    }],
+  },
+})

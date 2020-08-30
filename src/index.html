@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="./styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <title>Activity Tracker</title>
 </head>
 
@@ -13,71 +14,39 @@
     <h1 class='user-greeting'></h1>
     <div class="user-card">
       <div class="user-name"></div>
-      <div class="user-address">
-
-      </div>
-      <div class="user-email">
-
-      </div>
-      <div class="user-strideLength">
-
-      </div>
-      <div class="user-dailyStepGoal">
-
-      </div>
-      <div class="user-friends">
-
-      </div>
+      <div class="user-address"></div>
+      <div class="user-email"></div>
+      <div class="user-strideLength"></div>
+      <div class="user-dailyStepGoal"></div>
+      <div class="user-friends"></div>
     </div>
   </header>
 
   <section class="hydration">
     <div class="water-today">
-
+      <h3>Water Today</h3>
+      <div class="fluid-oz-today"></div>
     </div>
     <div class="weekly-water">
-
+      <h3>Water Consumed Over Past Week</h3>
+      <!-- <canvas id="water-chart" width="5px" height="5px"></canvas> -->
     </div>
   </section>
   <section class="sleep">
-    <div class="hours-slept">
-
-    </div>
-    <div class="weekly-sleep">
-
-    </div>
-    <div class="all-time-sleep">
-
-    </div>
+    <div class="hours-slept"></div>
+    <div class="weekly-sleep"></div>
+    <div class="all-time-sleep"></div>
   </section>
   <section class="activity">
-    <div class="steps-today">
-
-    </div>
-    <div class="active-minutes">
-
-    </div>
-    <div class="distance-walked">
-
-    </div>
-    <div class="weekly-steps">
-
-    </div>
-    <div class="weekly-stairs">
-
-    </div>
-    <div class="weekly-minutes-active">
-
-    </div>
-    <div class="steps-compare">
-
-    </div>
-    <div class="stairs-compare">
-
-    </div>
-    <div class="minutes-compare">
-
-    </div>
+    <div class="steps-today"></div>
+    <div class="active-minutes"></div>
+    <div class="distance-walked"></div>
+    <div class="weekly-steps"></div>
+    <div class="weekly-stairs"></div>
+    <div class="weekly-minutes-active"></div>
+    <div class="steps-compare"></div>
+    <div class="stairs-compare"></div>
+    <div class="minutes-compare"></div>
   </section>
 
   <script type="text/javascript" src="../data/users.js"></script>

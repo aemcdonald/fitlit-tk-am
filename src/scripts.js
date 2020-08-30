@@ -1,12 +1,13 @@
 let randomIndex = Math.floor(Math.random() * (userData.length - 1) + 1);
 
 const usersRepository = new UsersRepository(userData);
-const user = new User(userData[randomIndex]);
+const currentUser = new User(userData[randomIndex]);
 const hydration = new Hydration(hydrationData);
 const sleep = new Sleep(sleepData);
 const activity = new Activity(activityData, sleepData);
 const randomID = randomIndex + 1;
 
+const waterChart = document.getElementById('water-chart').getContext('2d');
 const userCard = document.querySelector('.user-card');
 const userGreeting = document.querySelector('.user-greeting');
 const userName = document.querySelector('.user-name');
@@ -15,12 +16,15 @@ const userEmail = document.querySelector('.user-email');
 const userStrideLength = document.querySelector('.user-strideLength');
 const userDailyStepGoal = document.querySelector('.user-dailyStepGoal');
 const userFriends = document.querySelector('.user-friends');
+const fluidOzToday = document.querySelector('.fluid-oz-today');
 
 const userProfile = usersRepository.returnUserData(randomID);
+
 
 window.addEventListener('load', function() {
   displayUserInfo();
   displayUserGreeting();
+  displayWaterToday(currentUser.user.id, mostRecentDay(hydrationData));
 });
 
 //refactor
@@ -34,6 +38,30 @@ function displayUserInfo() { //need to call this onload
   userFriends.innerText = `Friends: ${userProfile.friends}`;// display names, not ids.
 };
 
-function displayUserGreeting() {
-  userGreeting.innerText = `Hi, ${user.getFirstName()}!`;
+function mostRecentDay(dataSet) {
+  let obj = dataSet[dataSet.length - 1];
+  return obj.date;
 };
+
+function mostRecentWeek(dataSet) {
+
+}
+
+function displayUserGreeting() {
+  userGreeting.innerText = `Hi, ${currentUser.getFirstName()}!`;
+};
+
+function displayWaterToday(id, date) {
+  fluidOzToday.innerText = `You have consumed ${hydration.fluidOuncesOnDay(id, date)} ounces today.`
+};
+
+let waterGraph = new Chart(waterChart, {
+  type: 'bar',
+  data: {
+    labels: hydration.getMostRecentWeek(),
+    datasets: [ {
+      data: hydration.fluidOuncesWeek(currentUser.user.id),
+      backgroundColor: []
+    }],
+  },
+})

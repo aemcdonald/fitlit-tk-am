@@ -9,6 +9,13 @@ class Hydration {
       return user.userID === id;
     });
   }
+  getMostRecentWeek() {
+    let userData = this.getUser(1);
+    let userWeekData = userData.slice(-7);
+    return userWeekData.map(day => {
+      return day.date;
+    });
+  }
   getObjectByDate(id, date) {
     let userData = this.getUser(id);
     return userData.find(user => {
@@ -26,7 +33,7 @@ class Hydration {
     let userOunces = this.getObjectByDate(id, date);
     return userOunces.numOunces;
   }
-  fluidOuncesWeek(id, date) {
+  fluidOuncesWeek(id) {
     let userData = this.getUser(id);
     let userWeekData = userData.slice(-7);
     return userWeekData.map(day => {

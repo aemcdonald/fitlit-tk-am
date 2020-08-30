@@ -1,8 +1,8 @@
- const activityData = require('../data/activity');
- const userData = require('../data/users');
+ // const activityData = require('../data/activity');
+ // const userData = require('../data/users');
 
  class Activity {
-   constructor(activityData) {
+   constructor(activityData, userData) {
      this.activityData = activityData;
      this.userData = userData;
    }

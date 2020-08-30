@@ -1,4 +1,4 @@
-const sleepData = require('../data/sleep');
+// const sleepData = require('../data/sleep');
 
 class Sleep {
   constructor(sleepData) {

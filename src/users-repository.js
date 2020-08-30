@@ -1,4 +1,4 @@
-const usersSub = require('../data/users');
+// const userData = require('../data/users');
 
 class UsersRepository {
    constructor(userData) {

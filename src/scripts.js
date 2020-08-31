@@ -18,6 +18,13 @@ const userDailyStepGoal = document.querySelector('.user-dailyStepGoal');
 const userFriends = document.querySelector('.user-friends');
 const fluidOzToday = document.querySelector('.fluid-oz-today');
 
+const dailyHrsSlept = document.querySelector('.hours-slept-day');
+const dailySleepQuality = document.querySelector('.sleep-quality-day');
+const weeklyHrsSlept = document.querySelector('.hours-slept-week');
+const weeklySleepQuality = document.querySelector('.sleep-quality-week')
+const allTimeAvgSleepHrs = document.querySelector('.avg-hours-sleep');
+const allTimeAvgSleepQuality = document.querySelector('.avg-sleep-quality')
+
 const userProfile = usersRepository.returnUserData(randomID);
 
 
@@ -25,6 +32,8 @@ window.addEventListener('load', function() {
   displayUserInfo();
   displayUserGreeting();
   displayWaterToday(currentUser.user.id, mostRecentDay(hydrationData));
+  displayDailyHrsSlept(currentUser.user.id, mostRecentDay(sleepData));
+  displayDailySleepQuality(currentUser.user.id, mostRecentDay(sleepData));
 });
 
 //refactor
@@ -54,6 +63,14 @@ function displayUserGreeting() {
 function displayWaterToday(id, date) {
   fluidOzToday.innerText = `You have consumed ${hydration.fluidOuncesOnDay(id, date)} ounces today.`
 };
+
+function displayDailyHrsSlept(id, date) {
+  dailyHrsSlept.innerText = `Your hours slept today: ${sleep.dailyHoursSlept(id, date)} hours.`;
+}
+
+function displayDailySleepQuality(id, date) {
+  dailySleepQuality.innerText = `Your sleep quality today: ${sleep.dailySleepQuality(id, date)}`;
+}
 
 let waterGraph = new Chart(waterChart, {
   type: 'bar',

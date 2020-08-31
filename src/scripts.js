@@ -49,6 +49,7 @@ window.addEventListener('load', function() {
   displayDailySleepQuality(currentUser.user.id, mostRecentDay(sleepData));
   displayAvgSleepQuality(currentUser.user.id);
   displayAvgHrsSlept(currentUser.user.id);
+  displayDailySteps(currentUser.user.id, mostRecentDay(activityData));
 });
 
 //refactor
@@ -95,6 +96,9 @@ function displayAvgHrsSlept(id) {
   allTimeAvgSleepHrs.innerText = `Your all-time average hours slept: ${sleep.averageSleepDay(id)}`;
 }
 
+function displayDailySteps(id, date) {
+  numStepsDay.innerText = `Your step count today: ${activity.getStepsOnDay(id, date)}`;
+}
 
 let waterGraph = new Chart(waterChart, {
   type: 'bar',

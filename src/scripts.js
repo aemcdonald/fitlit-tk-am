@@ -35,6 +35,7 @@ window.addEventListener('load', function() {
   displayDailyHrsSlept(currentUser.user.id, mostRecentDay(sleepData));
   displayDailySleepQuality(currentUser.user.id, mostRecentDay(sleepData));
   displayAvgSleepQuality(currentUser.user.id);
+  displayAvgHrsSlept(currentUser.user.id);
 });
 
 //refactor
@@ -74,7 +75,11 @@ function displayDailySleepQuality(id, date) {
 }
 
 function displayAvgSleepQuality(id) {
-  allTimeAvgSleepQuality.innerText = `Your all time average sleep quality: ${sleep.userAvgSleepQuality(id)}`;
+  allTimeAvgSleepQuality.innerText = `Your all-time average sleep quality: ${sleep.userAvgSleepQuality(id)}`;
+}
+
+function displayAvgHrsSlept(id) {
+  allTimeAvgSleepHrs.innerText = `Your all-time average hours slept: ${sleep.averageSleepDay(id)}`;
 }
 
 

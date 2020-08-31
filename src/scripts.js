@@ -20,13 +20,23 @@ const userStrideLength = document.querySelector('.user-strideLength');
 const userDailyStepGoal = document.querySelector('.user-dailyStepGoal');
 const userFriends = document.querySelector('.user-friends');
 const fluidOzToday = document.querySelector('.fluid-oz-today');
-
 const dailyHrsSlept = document.querySelector('.hours-slept-day');
 const dailySleepQuality = document.querySelector('.sleep-quality-day');
 const weeklyHrsSlept = document.querySelector('.hours-slept-week');
 const weeklySleepQuality = document.querySelector('.sleep-quality-week')
 const allTimeAvgSleepHrs = document.querySelector('.avg-hours-sleep');
 const allTimeAvgSleepQuality = document.querySelector('.avg-sleep-quality');
+
+const numStepsDay = document.querySelector('.steps-today');
+const activeMinDay = document.querySelector('.active-minutes');
+const distanceWalked = document.querySelector('.distance-walked');
+const compareSteps = document.querySelector('.steps-compare');
+const compareMinutes = document.querySelector('.minutes-compare')
+const compareStairs = document.querySelector('.stairs-compare');
+const weeklySteps = document.querySelector('.weekly-steps');
+const weeklyStairs = document.querySelector('.weekly-stairs');
+const weeklyMinutes = document.querySelector('.weekly-minutes-active');
+
 
 const userProfile = usersRepository.returnUserData(randomID);
 

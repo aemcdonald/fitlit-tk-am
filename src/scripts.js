@@ -4,7 +4,7 @@ const usersRepository = new UsersRepository(userData);
 const currentUser = new User(userData[randomIndex]);
 const hydration = new Hydration(hydrationData);
 const sleep = new Sleep(sleepData);
-const activity = new Activity(activityData, sleepData);
+const activity = new Activity(activityData, userData);
 const randomID = randomIndex + 1;
 
 const waterChart = document.getElementById('water-chart').getContext('2d');
@@ -51,6 +51,10 @@ window.addEventListener('load', function() {
   displayAvgHrsSlept(currentUser.user.id);
   displayDailySteps(currentUser.user.id, mostRecentDay(activityData));
   displayDailyActiveMinues(currentUser.user.id, mostRecentDay(activityData));
+  displayDailyDistanceWalked(currentUser.user.id, mostRecentDay(activityData));
+  displayWeeklySteps(currentUser.user.id, mostRecentDay(activityData));
+  displayWeeklyStairs(currentUser.user.id, mostRecentDay(activityData));
+  displayWeeklyMinutes(currentUser.user.id, mostRecentDay(activityData));
 });
 
 //refactor
@@ -105,6 +109,22 @@ function displayDailyActiveMinues(id, date) {
   activeMinDay.innerText = `Minutes active today: ${activity.getUserMinutes(id, date)}`;
 }
 
+function displayDailyDistanceWalked(id, date) {
+  distanceWalked.innerText = `Miles walked today: ${activity.getUserMilesWalked(id, date)} miles`;
+}
+
+function displayWeeklySteps(id, date) {
+  compareSteps.innerText = `Total steps this week: ${activity.getUserWeeklySteps(id, date)}`;
+}
+
+function displayWeeklyStairs(id, date) {
+  compareStairs.innerText = `Total flights climbed this week: ${activity.getUserWeeklyStairs(id, date)}`;
+}
+
+function displayWeeklyMinutes(id, date) {
+  compareMinutes.innerText = `Total minutes active this week: ${activity.getUserWeeklyMinutes(id, date)}`;
+}
+
 let waterGraph = new Chart(waterChart, {
   type: 'bar',
   data: {
@@ -137,3 +157,6 @@ let weeklySleepQualityGraph = new Chart(weeklySleepQualityChart, {
     }],
   },
 })
+//graph for steps compared to all users for the latest day
+//graph for minutes active compared to all users for the latest day
+//graph for flights of stairs climbed compared to all users for the latest day

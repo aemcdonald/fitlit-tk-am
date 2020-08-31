@@ -50,6 +50,7 @@ window.addEventListener('load', function() {
   displayAvgSleepQuality(currentUser.user.id);
   displayAvgHrsSlept(currentUser.user.id);
   displayDailySteps(currentUser.user.id, mostRecentDay(activityData));
+  displayDailyActiveMinues(currentUser.user.id, mostRecentDay(activityData));
 });
 
 //refactor
@@ -98,6 +99,10 @@ function displayAvgHrsSlept(id) {
 
 function displayDailySteps(id, date) {
   numStepsDay.innerText = `Your step count today: ${activity.getStepsOnDay(id, date)}`;
+}
+
+function displayDailyActiveMinues(id, date) {
+  activeMinDay.innerText = `Minutes active today: ${activity.getUserMinutes(id, date)}`;
 }
 
 let waterGraph = new Chart(waterChart, {

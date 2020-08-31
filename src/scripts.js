@@ -9,6 +9,7 @@ const randomID = randomIndex + 1;
 
 const waterChart = document.getElementById('water-chart').getContext('2d');
 const weeklySleepChart = document.getElementById('weekly-hrs-slept-chart').getContext('2d');
+const weeklySleepQualityChart = document.getElementById('weekly-sleep-quality-chart').getContext('2d');
 
 const userCard = document.querySelector('.user-card');
 const userGreeting = document.querySelector('.user-greeting');
@@ -102,6 +103,17 @@ let weeklyHrsSleptGraph = new Chart(weeklySleepChart, {
     labels: sleep.getMostRecentWeek(),
     datasets: [ {
       data: sleep.dailySleepPerWeek(currentUser.user.id, mostRecentDay(sleepData)),
+      backgroundColor: []
+    }],
+  },
+})
+
+let weeklySleepQualityGraph = new Chart(weeklySleepQualityChart, {
+  type: 'bar',
+  data: {
+    labels: sleep.getMostRecentWeek(),
+    datasets: [ {
+      data: sleep.sleepQualityPerWeek(currentUser.user.id, mostRecentDay(sleepData)),
       backgroundColor: []
     }],
   },

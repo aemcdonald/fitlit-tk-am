@@ -8,6 +8,8 @@ const activity = new Activity(activityData, sleepData);
 const randomID = randomIndex + 1;
 
 const waterChart = document.getElementById('water-chart').getContext('2d');
+const weeklySleepChart = document.getElementById('weekly-hrs-slept-chart').getContext('2d');
+
 const userCard = document.querySelector('.user-card');
 const userGreeting = document.querySelector('.user-greeting');
 const userName = document.querySelector('.user-name');
@@ -89,6 +91,17 @@ let waterGraph = new Chart(waterChart, {
     labels: hydration.getMostRecentWeek(),
     datasets: [ {
       data: hydration.fluidOuncesWeek(currentUser.user.id),
+      backgroundColor: []
+    }],
+  },
+})
+
+let weeklyHrsSleptGraph = new Chart(weeklySleepChart, {
+  type: 'bar',
+  data: {
+    labels: sleep.getMostRecentWeek(),
+    datasets: [ {
+      data: sleep.dailySleepPerWeek(currentUser.user.id, mostRecentDay(sleepData)),
       backgroundColor: []
     }],
   },

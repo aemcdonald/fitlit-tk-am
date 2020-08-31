@@ -53,6 +53,24 @@
     });
    return day.numSteps >= userInfo.dailyStepGoal ? true : false;
   }
+  getUserWeeklySteps(id, date) {
+    let week = this.getAnyWeek(id, date);
+    return week.reduce((total, day) => {
+      return total += day.numSteps;
+    }, 0);
+  }
+  getUserWeeklyStairs(id, date) {
+    let week = this.getAnyWeek(id, date);
+    return week.reduce((total, day) => {
+      return total += day.flightsOfStairs;
+    }, 0);
+  }
+  getUserWeeklyMinutes(id, date) {
+    let week = this.getAnyWeek(id, date);
+    return week.reduce((total, day) => {
+      return total += day.minutesActive;
+    }, 0);
+  }
   avgStairsByDate(date) {
     let dateData = this.activityData.filter(user => {
       return user.date === date;

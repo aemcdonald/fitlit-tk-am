@@ -21,6 +21,13 @@ class Sleep {
     let index = userData.indexOf(currentUser);
     return userData.slice(index - 6, index + 1);
   }
+  getMostRecentWeek() {
+    let userData = this.getUser(1);
+    let userWeekData = userData.slice(-7);
+    return userWeekData.map(day => {
+      return day.date;
+    });
+  }
   averageSleepDay(id) {
     let userData = this.getUser(id);
     let totalSleep = userData.reduce((totalHrsSlept, user) => {

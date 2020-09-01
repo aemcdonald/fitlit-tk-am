@@ -10,6 +10,8 @@ const randomID = randomIndex + 1;
 const waterChart = document.getElementById('water-chart').getContext('2d');
 const weeklySleepChart = document.getElementById('weekly-hrs-slept-chart').getContext('2d');
 const weeklySleepQualityChart = document.getElementById('weekly-sleep-quality-chart').getContext('2d');
+// const weeklySleepQualityChart = document.getElementById('weekly-sleep-quality-chart').getContext('2d');
+// const compareActivityChart = document.getElementById('activity-compare-chart').getContext('2d');
 
 const userCard = document.querySelector('.user-card');
 const userGreeting = document.querySelector('.user-greeting');
@@ -30,9 +32,10 @@ const allTimeAvgSleepQuality = document.querySelector('.avg-sleep-quality');
 const numStepsDay = document.querySelector('.steps-today');
 const activeMinDay = document.querySelector('.active-minutes');
 const distanceWalked = document.querySelector('.distance-walked');
-const compareSteps = document.querySelector('.steps-compare');
-const compareMinutes = document.querySelector('.minutes-compare')
-const compareStairs = document.querySelector('.stairs-compare');
+const compareActivity = document.querySelector('.activity-compare');
+const compareSteps = document.querySelector('.compare-steps');
+const compareStairs = document.querySelector('.compare-stairs');
+const compareMinutes = document.querySelector('.compare-minutes-active');
 const weeklySteps = document.querySelector('.weekly-steps');
 const weeklyStairs = document.querySelector('.weekly-stairs');
 const weeklyMinutes = document.querySelector('.weekly-minutes-active');
@@ -55,6 +58,9 @@ window.addEventListener('load', function() {
   displayWeeklySteps(currentUser.user.id, mostRecentDay(activityData));
   displayWeeklyStairs(currentUser.user.id, mostRecentDay(activityData));
   displayWeeklyMinutes(currentUser.user.id, mostRecentDay(activityData));
+  displayStepsComparison(currentUser.user.id, mostRecentDay(activityData));
+  displayStairsComparison(currentUser.user.id, mostRecentDay(activityData));
+  displayMinutesComparison(currentUser.user.id, mostRecentDay(activityData));
 });
 
 //refactor
@@ -114,16 +120,29 @@ function displayDailyDistanceWalked(id, date) {
 }
 
 function displayWeeklySteps(id, date) {
-  compareSteps.innerText = `Total steps this week: ${activity.getUserWeeklySteps(id, date)}`;
+  weeklySteps.innerText = `Total steps this week: ${activity.getUserWeeklySteps(id, date)}`;
 }
 
 function displayWeeklyStairs(id, date) {
-  compareStairs.innerText = `Total flights climbed this week: ${activity.getUserWeeklyStairs(id, date)}`;
+  weeklyStairs.innerText = `Total flights climbed this week: ${activity.getUserWeeklyStairs(id, date)}`;
 }
 
 function displayWeeklyMinutes(id, date) {
-  compareMinutes.innerText = `Total minutes active this week: ${activity.getUserWeeklyMinutes(id, date)}`;
+  weeklyMinutes.innerText = `Total minutes active this week: ${activity.getUserWeeklyMinutes(id, date)}`;
 }
+
+function displayStepsComparison(id, date) {
+  compareSteps.innerText = `The average user's steps today: ${activity.avgStepsByDate(date)}, Your steps today: ${activity.getStepsOnDay(id, date)}.`;
+}
+
+function displayStairsComparison(id, date) {
+  compareStairs.innerText = `The average user's flights of stairs climbed today: ${activity.avgStairsByDate(date)}, Your stairs climbed today: ${activity.getStairsOnDay(id, date)}.`;
+}
+
+function displayMinutesComparison(id, date) {
+  compareMinutes.innerText = `The average user's minutes active today: ${activity.avgMinutesByDate(date)}, Your minutes active today: ${activity.getUserMinutes(id, date)}.`;
+}
+
 
 let waterGraph = new Chart(waterChart, {
   type: 'bar',
@@ -172,6 +191,49 @@ let weeklySleepQualityGraph = new Chart(weeklySleepQualityChart, {
     }
   }
 })
+// data1 = [
+//   24,
+//   activity.getUserMinutes(currentUser.user.id, mostRecentDay(activityData)),
+//   activity.getStairsOnDay(currentUser.user.id, mostRecentDay(activityData))
+// ]
+// data2 = [
+//   33,
+//   activity.avgMinutesByDate(mostRecentDay(activityData)),
+//   activity.avgStairsByDate(mostRecentDay(activityData))
+// ]
+// let compareActivityGraph = new Chart(compareActivityChart, {
+//   type: 'radar',
+//   data: {
+//     labels: ['Steps', 'Minutes Active', 'Flights of Stairs'],
+//     datasets: [ {
+//       label: 'Your Activity',
+//       fill: true,
+//       backgroundColor:'rgb(15, 72, 181)',
+//       borderColor:'rgb(200, 109, 1)',
+//       pointBorderColor:'rgb(200, 109, 1)',
+//       pointBackgroundColor:'rgb(200, 109, 1)',
+//       data: data1
+//     },
+//     {
+//       label: 'All Users',
+//       fill: true,
+//       backgroundColor:'rgb(83, 209, 155)',
+//       borderColor: 'rgb(255, 102, 102)',
+//       pointBorderColor: 'rgb(255, 102, 102)',
+//       pointBackgroundColor: 'rgb(255, 102, 102)',
+//       data: data2
+//     }],
+//   },
+//   options: {
+//     title: {
+//       text: 'How does your activity compare?',
+//       display: true //prob want to be true?
+//     }
+//   }
+// })
+
+
+
 //graph for steps compared to all users for the latest day
 //graph for minutes active compared to all users for the latest day
 //graph for flights of stairs climbed compared to all users for the latest day

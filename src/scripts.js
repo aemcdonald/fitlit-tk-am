@@ -134,6 +134,11 @@ let waterGraph = new Chart(waterChart, {
       backgroundColor: []
     }],
   },
+  options: {
+    legend: {
+      display: false
+    }
+  }
 })
 
 let weeklyHrsSleptGraph = new Chart(weeklySleepChart, {
@@ -145,6 +150,11 @@ let weeklyHrsSleptGraph = new Chart(weeklySleepChart, {
       backgroundColor: []
     }],
   },
+  options: {
+    legend: {
+      display: false
+    }
+  }
 })
 
 let weeklySleepQualityGraph = new Chart(weeklySleepQualityChart, {
@@ -156,6 +166,11 @@ let weeklySleepQualityGraph = new Chart(weeklySleepQualityChart, {
       backgroundColor: []
     }],
   },
+  options: {
+    legend: {
+      display: false
+    }
+  }
 })
 //graph for steps compared to all users for the latest day
 //graph for minutes active compared to all users for the latest day

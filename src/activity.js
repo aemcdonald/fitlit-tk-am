@@ -21,6 +21,10 @@
     let day = this.getObjectByDate(id, date);
     return day.numSteps
   }
+  getStairsOnDay(id, date) {
+    let day = this.getObjectByDate(id, date);
+    return day.flightsOfStairs;
+  }
   getAnyWeek(id, date) {
     let userData = this.getUser(id);
     let currentUser = this.getObjectByDate(id, date);

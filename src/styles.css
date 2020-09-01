@@ -1,0 +1,40 @@
+header {
+  height: 15vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+main {
+  height: 85vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 2fr 6fr;
+}
+
+.hydration {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sleep {
+  display: flex;
+  justify-content: space-between;
+}
+
+.activity {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-auto-flow: row;
+}
+
+.graph {
+  height: 15em !important;
+  width: 25em !important;
+}
+
+.weekly-view {
+  grid-column: 1 / 4;
+  display: flex;
+  justify-content: space-between;
+}

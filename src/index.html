@@ -10,7 +10,7 @@
 
 <body>
   <header>
-    <i></i>
+    <i>logo</i>
     <h1 class='user-greeting'></h1>
     <div class="user-card">
       <div class="user-name"></div>
@@ -22,6 +22,7 @@
     </div>
   </header>
 
+<section class="main">
   <section class="hydration">
     <div class="water-today">
       <h3>Water Today</h3>
@@ -29,7 +30,7 @@
     </div>
     <div class="weekly-water">
       <h3>Water Consumed Over Past Week</h3>
-      <canvas id="water-chart" width="5px" height="5px"></canvas>
+      <canvas class='graph' id="water-chart"></canvas>
     </div>
   </section>
   <section class="sleep">
@@ -40,11 +41,10 @@
     <div class="weekly-sleep">
       <div class="hours-slept-week">
         <h3>Hours Slept Over Past Week</h3>
-        <canvas id="weekly-hrs-slept-chart" width="5px" height="5px"></canvas>
+        <canvas class='graph' id="weekly-hrs-slept-chart"></canvas>
       </div>
-
       <div class="sleep-quality-week">
-        <canvas id="weekly-sleep-quality-chart" width="5px" height="5px"></canvas>
+        <canvas class='graph' id="weekly-sleep-quality-chart"></canvas>
       </div>
     </div>
     <div class="all-time-sleep">
@@ -56,18 +56,17 @@
     <div class="steps-today"></div>
     <div class="active-minutes"></div>
     <div class="distance-walked"></div>
-    <div class="activity-compare">
-      <div class="compare-steps"></div>
-      <div class="compare-stairs"></div>
-      <div class="compare-minutes-active"></div>
-      <!-- <canvas id="activity-compare-chart" width="300" height="300"></canvas> -->
-    </div>
+    <div class="compare-steps"></div>
+    <div class="compare-stairs"></div>
+    <div class="compare-minutes-active"></div>
+    <!-- <canvas id="activity-compare-chart" width="300" height="300"></canvas> -->
     <div class="weekly-view">
       <div class="weekly-steps"></div>
       <div class="weekly-stairs"></div>
       <div class="weekly-minutes-active"></div>
     </div>
   </section>
+</section>
 
   <script type="text/javascript" src="../data/users.js"></script>
   <script type="text/javascript" src="../data/hydration.js"></script>
@@ -80,4 +79,5 @@
   <script type="text/javascript" src="./activity.js"></script>
   <script type="text/javascript" src="./scripts.js"></script>
 </body>
+
 </html>

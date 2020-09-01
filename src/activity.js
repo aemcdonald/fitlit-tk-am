@@ -17,6 +17,14 @@
       return user.date === date;
     });
   }
+  getStepsOnDay(id, date) {
+    let day = this.getObjectByDate(id, date);
+    return day.numSteps
+  }
+  getStairsOnDay(id, date) {
+    let day = this.getObjectByDate(id, date);
+    return day.flightsOfStairs;
+  }
   getAnyWeek(id, date) {
     let userData = this.getUser(id);
     let currentUser = this.getObjectByDate(id, date);
@@ -24,11 +32,11 @@
     return userData.slice(index - 6, index + 1);
   }
   getUserMilesWalked(id, date) {
-    let day = this.getObjectByDate(id, date);
+    let stepsOnDay = this.getStepsOnDay(id, date);
     let userInfo = this.userData.find(user => {
       return user.id === id;
     });
-    let totalFeet = userInfo.strideLength * day.numSteps;
+    let totalFeet = userInfo.strideLength * stepsOnDay;
     return +parseFloat((totalFeet / 5280).toFixed(2));
   }
   getUserMinutes(id, date) {
@@ -48,6 +56,24 @@
       return user.id === id;
     });
    return day.numSteps >= userInfo.dailyStepGoal ? true : false;
+  }
+  getUserWeeklySteps(id, date) {
+    let week = this.getAnyWeek(id, date);
+    return week.reduce((total, day) => {
+      return total += day.numSteps;
+    }, 0);
+  }
+  getUserWeeklyStairs(id, date) {
+    let week = this.getAnyWeek(id, date);
+    return week.reduce((total, day) => {
+      return total += day.flightsOfStairs;
+    }, 0);
+  }
+  getUserWeeklyMinutes(id, date) {
+    let week = this.getAnyWeek(id, date);
+    return week.reduce((total, day) => {
+      return total += day.minutesActive;
+    }, 0);
   }
   avgStairsByDate(date) {
     let dateData = this.activityData.filter(user => {

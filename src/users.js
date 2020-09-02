@@ -1,9 +1,8 @@
-// const userData = require('../data/users');
-
 class User {
   constructor(user) {
     this.user = user;
   }
+  
   getFirstName() {
     let fullNames = this.user.name.split(' ');
     return fullNames[0];
@@ -12,4 +11,4 @@ class User {
 
 if (typeof module !== 'undefined') {
   module.exports = User;
-};
+}

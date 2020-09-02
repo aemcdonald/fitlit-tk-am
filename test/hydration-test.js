@@ -20,14 +20,14 @@ describe('Hydration', () => {
     expect(user1Avg).to.equal(59.4);
   });
 
-  it('Should calculate a user\'s fluid ounces consumed for a specific day', () => {
+  it('Should calculate a user\'s fluid ounces for a specific day', () => {
     let user1Ounces = hydration.fluidOuncesOnDay(1, "2019/06/15");
     expect(user1Ounces).to.equal(37);
   });
 
   it('Should return a user\'s fluid ounces each day for a given week', () => {
     let user1data = hydration.fluidOuncesWeek(1);
-    user1Week = [61, 91, 50, 50, 43, 39, 61];
+    let user1Week = [61, 91, 50, 50, 43, 39, 61];
     expect(user1data).to.deep.equal(user1Week);
   });
 });

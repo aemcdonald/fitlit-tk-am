@@ -1,21 +1,14 @@
- // const activityData = require('../data/activity');
- // const userData = require('../data/users');
-
- class Activity {
-   constructor(activityData, userData) {
-     this.activityData = activityData;
-     this.userData = userData;
-   }
-   getUser(id) {
-     return this.activityData.filter(user => {
-       return user.userID === id;
-     });
+class Activity {
+  constructor(activityData, userData) {
+    this.activityData = activityData;
+    this.userData = userData;
+  }
+  getUser(id) {
+    return this.activityData.filter(user => user.userID === id);
   }
   getObjectByDate(id, date) {
     let userObj = this.getUser(id);
-    return userObj.find(user => {
-      return user.date === date;
-    });
+    return userObj.find(user => user.date === date);
   }
   getStepsOnDay(id, date) {
     let day = this.getObjectByDate(id, date);
@@ -33,9 +26,7 @@
   }
   getUserMilesWalked(id, date) {
     let stepsOnDay = this.getStepsOnDay(id, date);
-    let userInfo = this.userData.find(user => {
-      return user.id === id;
-    });
+    let userInfo = this.userData.find(user => user.id === id);
     let totalFeet = userInfo.strideLength * stepsOnDay;
     return +parseFloat((totalFeet / 5280).toFixed(2));
   }
@@ -52,10 +43,8 @@
   }
   stepGoalReached(id, date) {
     let day = this.getObjectByDate(id, date);
-    let userInfo = this.userData.find(user => {
-      return user.id === id;
-    });
-   return day.numSteps >= userInfo.dailyStepGoal ? true : false;
+    let userInfo = this.userData.find(user => user.id === id);
+    return day.numSteps >= userInfo.dailyStepGoal ? true : false;
   }
   getUserWeeklySteps(id, date) {
     let week = this.getAnyWeek(id, date);
@@ -76,27 +65,21 @@
     }, 0);
   }
   avgStairsByDate(date) {
-    let dateData = this.activityData.filter(user => {
-      return user.date === date;
-    });
+    let dateData = this.activityData.filter(user => user.date === date);
     let allStairs = dateData.reduce((total, user) => {
       return total += user.flightsOfStairs;
     }, 0);
     return +parseFloat((allStairs / dateData.length).toFixed(2));
   }
   avgStepsByDate(date) {
-    let dateData = this.activityData.filter(user => {
-      return user.date === date;
-    });
+    let dateData = this.activityData.filter(user => user.date === date);
     let allSteps = dateData.reduce((total, user) => {
       return total += user.numSteps;
     }, 0);
     return +parseFloat((allSteps / dateData.length).toFixed(2));
   }
   avgMinutesByDate(date) {
-    let dateData = this.activityData.filter(user => {
-      return user.date === date;
-    });
+    let dateData = this.activityData.filter(user => user.date === date);
     let allMinutes = dateData.reduce((total, user) => {
       return total += user.minutesActive;
     }, 0);
@@ -110,10 +93,6 @@
   }
 }
 
-
-
-
-
- if (typeof module !== 'undefined') {
-   module.exports = Activity;
- }
+if (typeof module !== 'undefined') {
+  module.exports = Activity;
+}

@@ -72,7 +72,7 @@ describe('Sleep', () => {
     expect(goodSleepers).to.deep.equal([
       { user: '2', sleepQuality: 3.4857142857142853 },
       { user: '3', sleepQuality: 3.414285714285714 }
-      ])
+    ])
   });
 
   it('should find the hours slept of a user\'s longest night of sleep', () => {

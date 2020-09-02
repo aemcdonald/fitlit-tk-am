@@ -20,6 +20,7 @@ const userAddress = document.querySelector('.user-address');
 const userEmail = document.querySelector('.user-email');
 const userStrideLength = document.querySelector('.user-strideLength');
 const userDailyStepGoal = document.querySelector('.user-dailyStepGoal');
+const allDailyStepGoal = document.querySelector('.all-dailyStepGoal');
 const userFriends = document.querySelector('.user-friends');
 const fluidOzToday = document.querySelector('.fluid-oz-today');
 const dailyHrsSlept = document.querySelector('.hours-slept-day');
@@ -65,13 +66,9 @@ window.addEventListener('load', function() {
 
 //refactor
 function displayUserInfo() { //need to call this onload
-  userName.innerText = `Name: ${userProfile.name}`;
-  userAddress.innerText = `Address: ${userProfile.address}`;
-  userEmail.innerText = `Email: ${userProfile.email}`;
   userStrideLength.innerText = `Your Stride Length: ${userProfile.strideLength}`;
-  userDailyStepGoal.innerText = `Your Daily Step Goal: ${userProfile.dailyStepGoal}, the average step goal for all users is ${usersRepository.getAverageStepGoal()}.`
-
-  userFriends.innerText = `Friends: ${userProfile.friends}`;// display names, not ids.
+  userDailyStepGoal.innerText = `Your Daily Step Goal: ${userProfile.dailyStepGoal}`;
+  allDailyStepGoal.innerText = `All Users Avg Step Goal: ${usersRepository.getAverageStepGoal()}`;
 };
 
 function mostRecentDay(dataSet) {
@@ -84,51 +81,51 @@ function mostRecentDay(dataSet) {
 // }
 
 function displayUserGreeting() {
-  userGreeting.innerText = `Hi, ${currentUser.getFirstName()}`;
+  userGreeting.innerText = `Hi   ${currentUser.getFirstName()}!`;
 };
 
 function displayWaterToday(id, date) {
-  fluidOzToday.innerText = `You have consumed ${hydration.fluidOuncesOnDay(id, date)} ounces today.`
+  fluidOzToday.innerText = hydration.fluidOuncesOnDay(id, date)
 };
 
 function displayDailyHrsSlept(id, date) {
-  dailyHrsSlept.innerText = `Your hours slept today: ${sleep.dailyHoursSlept(id, date)} hours.`;
+  dailyHrsSlept.innerText =  sleep.dailyHoursSlept(id, date);
 }
 
 function displayDailySleepQuality(id, date) {
-  dailySleepQuality.innerText = `Your sleep quality today: ${sleep.dailySleepQuality(id, date)}`;
+  dailySleepQuality.innerText = sleep.dailySleepQuality(id, date);
 }
 
 function displayAvgSleepQuality(id) {
-  allTimeAvgSleepQuality.innerText = `Your all-time average sleep quality: ${sleep.userAvgSleepQuality(id)}`;
+  allTimeAvgSleepQuality.innerText = sleep.userAvgSleepQuality(id);
 }
 
 function displayAvgHrsSlept(id) {
-  allTimeAvgSleepHrs.innerText = `Your all-time average hours slept: ${sleep.averageSleepDay(id)}`;
+  allTimeAvgSleepHrs.innerText = sleep.averageSleepDay(id);
 }
 
 function displayDailySteps(id, date) {
-  numStepsDay.innerText = `Your step count today: ${activity.getStepsOnDay(id, date)}`;
+  numStepsDay.innerText = activity.getStepsOnDay(id, date);
 }
 
 function displayDailyActiveMinues(id, date) {
-  activeMinDay.innerText = `Minutes active today: ${activity.getUserMinutes(id, date)}`;
+  activeMinDay.innerText = activity.getUserMinutes(id, date);
 }
 
 function displayDailyDistanceWalked(id, date) {
-  distanceWalked.innerText = `Miles walked today: ${activity.getUserMilesWalked(id, date)} miles`;
+  distanceWalked.innerText = activity.getUserMilesWalked(id, date);
 }
 
 function displayWeeklySteps(id, date) {
-  weeklySteps.innerText = `Total steps this week: ${activity.getUserWeeklySteps(id, date)}`;
+  weeklySteps.innerText = activity.getUserWeeklySteps(id, date);
 }
 
 function displayWeeklyStairs(id, date) {
-  weeklyStairs.innerText = `Total flights climbed this week: ${activity.getUserWeeklyStairs(id, date)}`;
+  weeklyStairs.innerText = activity.getUserWeeklyStairs(id, date);
 }
 
 function displayWeeklyMinutes(id, date) {
-  weeklyMinutes.innerText = `Total minutes active this week: ${activity.getUserWeeklyMinutes(id, date)}`;
+  weeklyMinutes.innerText = activity.getUserWeeklyMinutes(id, date);
 }
 
 function displayStepsComparison(id, date) {
@@ -151,13 +148,13 @@ let waterGraph = new Chart(waterChart, {
     datasets: [ {
       data: hydration.fluidOuncesWeek(currentUser.user.id),
       backgroundColor: [
-        'rgb(117, 250, 210)',
-        'rgb(221, 144, 54)',
-        'rgb(25, 211, 236)',
-        'rgb(210, 96, 94)',
-        'rgb(236, 117, 246)',
-        'rgb(168, 245, 108)',
-        'rgb(255, 247, 56)'
+        'rgb(168, 255, 229)',
+        'rgb(255, 216, 171)',
+        'rgb(150, 243, 255)',
+        'rgb(255, 172, 171)',
+        'rgb(250, 186, 255)',
+        'rgb(211, 255, 176)',
+        'rgb(255, 252, 172)'
       ]
     }],
   },
@@ -175,13 +172,13 @@ let weeklyHrsSleptGraph = new Chart(weeklySleepChart, {
     datasets: [ {
       data: sleep.dailySleepPerWeek(currentUser.user.id, mostRecentDay(sleepData)),
       backgroundColor: [
-        'rgb(117, 250, 210)',
-        'rgb(221, 144, 54)',
-        'rgb(25, 211, 236)',
-        'rgb(210, 96, 94)',
-        'rgb(236, 117, 246)',
-        'rgb(168, 245, 108)',
-        'rgb(255, 247, 56)'
+        'rgb(168, 255, 229)',
+        'rgb(255, 216, 171)',
+        'rgb(150, 243, 255)',
+        'rgb(255, 172, 171)',
+        'rgb(250, 186, 255)',
+        'rgb(211, 255, 176)',
+        'rgb(255, 252, 172)'
       ]
     }],
   },
@@ -199,13 +196,13 @@ let weeklySleepQualityGraph = new Chart(weeklySleepQualityChart, {
     datasets: [ {
       data: sleep.sleepQualityPerWeek(currentUser.user.id, mostRecentDay(sleepData)),
       backgroundColor: [
-        'rgb(117, 250, 210)',
-        'rgb(221, 144, 54)',
-        'rgb(25, 211, 236)',
-        'rgb(210, 96, 94)',
-        'rgb(236, 117, 246)',
-        'rgb(168, 245, 108)',
-        'rgb(255, 247, 56)'
+        'rgb(168, 255, 229)',
+        'rgb(255, 216, 171)',
+        'rgb(150, 243, 255)',
+        'rgb(255, 172, 171)',
+        'rgb(250, 186, 255)',
+        'rgb(211, 255, 176)',
+        'rgb(255, 252, 172)'
       ]
     }],
   },

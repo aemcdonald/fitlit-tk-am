@@ -4,73 +4,154 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="./styles.css">
-  <style>
-@import url('https://fonts.googleapis.com/css2?family=Arvo&family=Lato:wght@700&display=swap');
-</style>
+  <link href="https://fonts.googleapis.com/css2?family=Arvo&family=Krona+One&family=Lato:wght@300&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="https://kit.fontawesome.com/6bac58a1f1.js" crossorigin="anonymous"></script>
   <title>Activity Tracker</title>
 </head>
 
 <body>
   <header>
-    <h1 class="font-1">FitLit</h1>
-    <h1 class='user-greeting'></h1>
-    <div class="user-card">
+    <h1 class="brand font-1">FitLit</h1>
+    <h1 class='user-greeting font-1'></h1>
+    <div class="user-card font-1">
       <div class="user-name"></div>
       <div class="user-address"></div>
       <div class="user-email"></div>
       <div class="user-strideLength"></div>
       <div class="user-dailyStepGoal"></div>
+      <div class="all-dailyStepGoal"></div>
       <div class="user-friends"></div>
     </div>
   </header>
 
   <section class="main">
-    <section class="hydration">
+
+    <section class="hydration section">
+      <i class="fas fa-heartbeat"></i>
       <div class="water-today box">
-        <h3 class='title font-1'>Water Today</h3>
-        <div class="fluid-oz-today font-2"></div>
+        <div class="title">
+          <h3 class='font-1'>water consumed
+            today</h3>
+        </div>
+        <div class="data box">
+          <p class="fluid-oz-today font-2"></p>
+          <p class="caption font-3">oz</p>
+        </div>
       </div>
       <div class="box">
         <div class="weekly-water box">
-          <h3 class='title font-1'>Ounces of Water Consumed Over Past Week</h3>
+          <h3 class='title font-1'>water consumed over past week in oz</h3>
           <canvas class='graph' id="water-chart"></canvas>
         </div>
       </div>
     </section>
-    <section class="sleep">
+
+    <section class="sleep section">
       <div class="daily-sleep box">
-        <div class="hours-slept-day"></div>
-        <div class="sleep-quality-day"></div>
+        <div class="title">
+          <h3 class="font-1">hours slept today</h3>
+        </div>
+        <div class="top data box">
+          <p class="hours-slept-day font-2"></p>
+          <p class="caption font-3">hours</p>
+        </div>
+        <div class="title">
+          <h3 class="font-1">sleep quality today</h3>
+        </div>
+        <div class="data box">
+          <p class="bottom sleep-quality-day font-2"></p>
+        </div>
       </div>
       <div class="weekly-sleep box">
         <div class="hours-slept-week box">
-          <h3 class='title font-1'>Hours Slept Over Past Week</h3>
+          <h3 class='title font-1'>hours slept over past week</h3>
           <canvas class='graph' id="weekly-hrs-slept-chart"></canvas>
         </div>
         <div class="sleep-quality-week box">
-          <h3 class='title font-1'>Sleep Quality Over Past Week</h3>
+          <h3 class='title font-1'>sleep quality over past week</h3>
           <canvas class='graph' id="weekly-sleep-quality-chart"></canvas>
         </div>
       </div>
       <div class="all-time-sleep box">
-        <div class="avg-hours-sleep"></div>
-        <div class="avg-sleep-quality"></div>
+        <div class="title">
+          <h3 class="font-1">avg hours slept</h3>
+        </div>
+        <div class="top data box">
+          <p class="avg-hours-sleep font-2"></p>
+          <p class="caption font-3">hours</p>
+        </div>
+        <div class="title">
+          <h3 class="font-1">avg sleep quality</h3>
+        </div>
+        <div class="data box">
+          <p class="bottom avg-sleep-quality font-2"></p>
+        </div>
       </div>
     </section>
-    <section class="activity">
-      <div class="steps-today box"></div>
-      <div class="active-minutes box"></div>
-      <div class="distance-walked box"></div>
+
+    <section class="activity section">
+      <div class="steps box">
+        <div class="title">
+          <h3 class="font-1">steps today</h3>
+        </div>
+        <div class="data box">
+          <p class="steps-today font-2"></p>
+          <p class="caption font-3">steps</p>
+        </div>
+      </div>
+      <div class="minutes box">
+        <div class="title">
+          <h3 class="font-1">time active today</h3>
+        </div>
+        <div class="data box">
+          <p class="active-minutes font-2"></p>
+          <p class="caption font-3">minutes</p>
+        </div>
+      </div>
+      <div class="distance box">
+        <div class="title">
+          <h3 class="font-1">distance walked today</h3>
+        </div>
+        <div class="data box">
+          <p class="distance-walked font-2"></p>
+          <p class="caption font-3">miles</p>
+        </div>
+      </div>
+      <div class="weekly-view">
+        <div class="steps">
+          <div class="title">
+            <h3 class="font-1">steps this week</h3>
+          </div>
+          <div class="data box">
+            <p class="weekly-steps font-2"></p>
+            <p class="caption font-3">steps</p>
+          </div>
+        </div>
+        <div class="stairs">
+          <div class="title">
+            <h3 class="font-1">flights of stairs this week</h3>
+          </div>
+          <div class="data box">
+            <p class="weekly-stairs font-2"></p>
+            <p class="caption font-3">flights of stairs</p>
+          </div>
+        </div>
+        <div class="minutes">
+          <div class="title">
+            <h3 class="font-1">minutes active this week</h3>
+          </div>
+          <div class="data box">
+            <p class="weekly-minutes-active font-2"></p>
+            <p class="caption font-3">minutes</p>
+          </div>
+        </div>
+      </div>
       <div class="compare-steps box"></div>
       <div class="compare-stairs box"></div>
       <div class="compare-minutes-active box"></div>
-      <!-- <canvas id="activity-compare-chart" width="300" height="300"></canvas> -->
-      <div class="weekly-view">
-        <div class="weekly-steps"></div>
-        <div class="weekly-stairs"></div>
-        <div class="weekly-minutes-active"></div>
-      </div>
+
+
     </section>
   </section>
 

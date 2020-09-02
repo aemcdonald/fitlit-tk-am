@@ -23,7 +23,7 @@ describe('Activity', () => {
 
   it('Should return the miles a user has walked', () => {
     let user1Data = activity.getUserMilesWalked(1, "2019/06/15");
-    expect(user1Data).to.equal(2.91);
+    expect(user1Data).to.equal(2);
   });
 
   it('Should return a user\'s active mintes for a day', () => {
@@ -48,7 +48,7 @@ describe('Activity', () => {
 
   it('Should determine average stairs climbed on a date for all users', () => {
     let avgStairs = activity.avgStairsByDate("2019/06/15");
-    expect(avgStairs).to.equal(19.67);
+    expect(avgStairs).to.equal(19);
   });
 
   it('Should determine average steps on a date for all users', () => {
@@ -58,7 +58,7 @@ describe('Activity', () => {
 
   it('Should determine average minutes active on a date for all users', () => {
     let avgMinutes = activity.avgMinutesByDate("2019/06/15");
-    expect(avgMinutes).to.equal(131.33);
+    expect(avgMinutes).to.equal(131);
   });
 
   it('Should determine a user\'s total number of steps for all time', () => {

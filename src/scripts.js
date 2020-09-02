@@ -30,13 +30,16 @@ const weeklySleepQuality = document.querySelector('.sleep-quality-week')
 const allTimeAvgSleepHrs = document.querySelector('.avg-hours-sleep');
 const allTimeAvgSleepQuality = document.querySelector('.avg-sleep-quality');
 
-const numStepsDay = document.querySelector('.steps-today');
-const activeMinDay = document.querySelector('.active-minutes');
+// const numStepsDay = document.querySelector('.steps-today');
+// const activeMinDay = document.querySelector('.active-minutes');
 const distanceWalked = document.querySelector('.distance-walked');
 const compareActivity = document.querySelector('.activity-compare');
-const compareSteps = document.querySelector('.compare-steps');
-const compareStairs = document.querySelector('.compare-stairs');
-const compareMinutes = document.querySelector('.compare-minutes-active');
+const stepsAllAvg = document.querySelector('.steps-all-avg');
+const userStepsToday = document.querySelector('.user-steps-today');
+const stairsAllAvg = document.querySelector('.stairs-all-avg');
+const userStairsToday = document.querySelector('.user-stairs-today');
+const minutesAllAvg = document.querySelector('.minutes-all-avg');
+const userMinutesToday = document.querySelector('.user-minutes-today');
 const weeklySteps = document.querySelector('.weekly-steps');
 const weeklyStairs = document.querySelector('.weekly-stairs');
 const weeklyMinutes = document.querySelector('.weekly-minutes-active');
@@ -59,26 +62,25 @@ window.addEventListener('load', function() {
   displayWeeklySteps(currentUser.user.id, mostRecentDay(activityData));
   displayWeeklyStairs(currentUser.user.id, mostRecentDay(activityData));
   displayWeeklyMinutes(currentUser.user.id, mostRecentDay(activityData));
-  displayStepsComparison(currentUser.user.id, mostRecentDay(activityData));
-  displayStairsComparison(currentUser.user.id, mostRecentDay(activityData));
-  displayMinutesComparison(currentUser.user.id, mostRecentDay(activityData));
+  displayStepsAllAvg(currentUser.user.id, mostRecentDay(activityData));
+  displayDailySteps(currentUser.user.id, mostRecentDay(activityData)); //delete
+  displayStairsAllAvg(currentUser.user.id, mostRecentDay(activityData));
+  displayUserStairsToday(currentUser.user.id, mostRecentDay(activityData));
+  displayMinutesAllAvg(currentUser.user.id, mostRecentDay(activityData));
+  displayDailyActiveMinues(currentUser.user.id, mostRecentDay(activityData)); //delete
 });
 
 //refactor
 function displayUserInfo() { //need to call this onload
-  userStrideLength.innerText = `Your Stride Length: ${userProfile.strideLength}`;
+  userStrideLength.innerText = `Your Stride Length: ${userProfile.strideLength} ft`;
   userDailyStepGoal.innerText = `Your Daily Step Goal: ${userProfile.dailyStepGoal}`;
-  allDailyStepGoal.innerText = `All Users Avg Step Goal: ${usersRepository.getAverageStepGoal()}`;
+  allDailyStepGoal.innerText = `Avg User Daily Step Goal: ${usersRepository.getAverageStepGoal()}`;
 };
 
 function mostRecentDay(dataSet) {
   let obj = dataSet[dataSet.length - 1];
   return obj.date;
 };
-
-// function mostRecentWeek(dataSet) {
-//
-// }
 
 function displayUserGreeting() {
   userGreeting.innerText = `Hi   ${currentUser.getFirstName()}!`;
@@ -105,11 +107,13 @@ function displayAvgHrsSlept(id) {
 }
 
 function displayDailySteps(id, date) {
-  numStepsDay.innerText = activity.getStepsOnDay(id, date);
+  // numStepsDay.innerText = activity.getStepsOnDay(id, date);
+  userStepsToday.innerText = activity.getStepsOnDay(id, date);//delete
 }
 
 function displayDailyActiveMinues(id, date) {
-  activeMinDay.innerText = activity.getUserMinutes(id, date);
+  // activeMinDay.innerText = activity.getUserMinutes(id, date);
+  userMinutesToday.innerText = activity.getUserMinutes(id, date);//delete
 }
 
 function displayDailyDistanceWalked(id, date) {
@@ -128,17 +132,29 @@ function displayWeeklyMinutes(id, date) {
   weeklyMinutes.innerText = activity.getUserWeeklyMinutes(id, date);
 }
 
-function displayStepsComparison(id, date) {
-  compareSteps.innerText = `The average user's steps today: ${activity.avgStepsByDate(date)}, Your steps today: ${activity.getStepsOnDay(id, date)}.`;
+function displayStepsAllAvg(id, date) {
+  stepsAllAvg.innerText = activity.avgStepsByDate(date);
 }
 
-function displayStairsComparison(id, date) {
-  compareStairs.innerText = `The average user's flights of stairs climbed today: ${activity.avgStairsByDate(date)}, Your stairs climbed today: ${activity.getStairsOnDay(id, date)}.`;
+// function displayUserStepsDay(id, date) {
+//   userStepsToday.innertext = activity.getStepsOnDay(id, date);
+// }
+
+function displayStairsAllAvg(id, date) {
+  stairsAllAvg.innerText =  activity.avgStairsByDate(date);
 }
 
-function displayMinutesComparison(id, date) {
-  compareMinutes.innerText = `The average user's minutes active today: ${activity.avgMinutesByDate(date)}, Your minutes active today: ${activity.getUserMinutes(id, date)}.`;
+function displayUserStairsToday(id, date) {
+  userStairsToday.innerText = activity.getStairsOnDay(id, date);
 }
+
+function displayMinutesAllAvg(id, date) {
+  minutesAllAvg.innerText = activity.avgMinutesByDate(date);
+}
+
+// function displayUserMinutesToday(id, date) {
+//   userMinutesToday.innerText = activity.getUserMinutes(id, date);
+// }
 
 
 let waterGraph = new Chart(waterChart, {

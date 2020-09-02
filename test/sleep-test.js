@@ -4,7 +4,6 @@ const expect = chai.expect;
 const sleepData = require('../data/sleep-sub');
 const Sleep = require('../src/sleep');
 
-
 describe('Sleep', () => {
   let sleep;
   beforeEach(() => {
@@ -16,7 +15,7 @@ describe('Sleep', () => {
     expect(user1[0]).to.equal(sleepData[0]);
   });
 
-  it('Should return a user\'s average number of hours slept per day for all time', () => {
+  it('Should return a user\'s average hours slept per day for all time', () => {
     let user1Avg = sleep.averageSleepDay(1);
     expect(user1Avg).to.equal(7.92);
   });
@@ -67,6 +66,11 @@ describe('Sleep', () => {
       "sleepQuality": 4.9
     }])
   });
+
+  // it('Should return user\'s with an average sleep quality above 3 in a week', () => {
+  //   let goodSleepers = sleep.getQualityAboveThree("2019/06/15", "2019/06/21")
+  //   expect(goodSleepers).to.deep.equal()
+  // })
 
   it('should find the hours slept of a user\'s longest night of sleep', () => {
     let bestNight = sleep.findLongNightSleep(1);

@@ -56,7 +56,7 @@ class Sleep {
     }, 0);
     return allSleepQuality / this.sleepData.length;
   }
-  getAvgSleepAboveThree(startDate, endDate) {
+  getQualityAboveThree(startDate, endDate) {
     let usersWeekData = this.sleepData.filter(day => {
       return day.date >= startDate && day.date <= endDate
     })

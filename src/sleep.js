@@ -72,8 +72,22 @@ class Sleep {
     }, 0);
     return allSleepQuality / this.sleepData.length;
   }
-  getGoodSleepers(date) {
-
+  getAvgSleepAboveThree(startDate, endDate) {
+    let usersWeekData = this.sleepData.filter(day => {
+      return day.date >= startDate && day.date <= endDate
+    })
+    let usersTotalSleep = usersWeekData.reduce((userSleepQuality, user) => {
+       if (!userSleepQuality[user.userID]) {
+         userSleepQuality[user.userID] = 0
+       }
+       userSleepQuality[user.userID] += user.sleepQuality;
+       return userSleepQuality
+     }, {} )
+   let avgSleepQualityValues = Object.values(usersTotalSleep);
+   let userAverages = avgSleepQualityValues.map((value, i) => {
+     return { [Object.keys(usersTotalSleep)[i]]: value / 7 }
+   })
+   console.log(userAverages) //array of user's averages
   }
   mostHoursSleptByDay(date) {
     let dateData = this.sleepData.filter(day => {

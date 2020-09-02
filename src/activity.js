@@ -37,7 +37,7 @@
       return user.id === id;
     });
     let totalFeet = userInfo.strideLength * stepsOnDay;
-    return +parseFloat((totalFeet / 5280).toFixed(2));
+    return Math.floor(totalFeet / 5280);
   }
   getUserMinutes(id, date) {
     let user = this.getObjectByDate(id, date);
@@ -82,7 +82,7 @@
     let allStairs = dateData.reduce((total, user) => {
       return total += user.flightsOfStairs;
     }, 0);
-    return +parseFloat((allStairs / dateData.length).toFixed(2));
+    return Math.floor(allStairs / dateData.length);
   }
   avgStepsByDate(date) {
     let dateData = this.activityData.filter(user => {
@@ -91,7 +91,7 @@
     let allSteps = dateData.reduce((total, user) => {
       return total += user.numSteps;
     }, 0);
-    return +parseFloat((allSteps / dateData.length).toFixed(2));
+    return Math.floor(allSteps / dateData.length);
   }
   avgMinutesByDate(date) {
     let dateData = this.activityData.filter(user => {
@@ -100,7 +100,7 @@
     let allMinutes = dateData.reduce((total, user) => {
       return total += user.minutesActive;
     }, 0);
-    return +parseFloat((allMinutes / dateData.length).toFixed(2));
+    return Math.floor(allMinutes / dateData.length);
   }
   getUserTotalSteps(id) {
     let userData = this.getUser(id);

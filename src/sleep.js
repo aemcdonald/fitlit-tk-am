@@ -77,13 +77,14 @@ class Sleep {
         userSleepQuality[user.userID] = 0
       }
       userSleepQuality[user.userID] += user.sleepQuality;
-      return userSleepQuality
+      return userSleepQuality;
     }, {} )
     let avgSleepQualityValues = Object.values(usersTotalSleep);
     let userAverages = avgSleepQualityValues.map((value, i) => {
-      return { [Object.keys(usersTotalSleep)[i]]: value / 7 }
+      return { user: Object.keys(usersTotalSleep)[i], sleepQuality: value / 7 }
     })
-    console.log(userAverages) //array of user's averages
+    let aboveThree = userAverages.filter(user => user.sleepQuality > 3);
+    return aboveThree;
   }
 
   mostHoursSleptByDay(date) {
@@ -92,7 +93,7 @@ class Sleep {
     let mostHours = sorted.filter(user => user.hoursSlept === sorted[0].hoursSlept);
     return mostHours;
   }
-  
+
   findLongNightSleep(id) {
     let userData = this.getUser(id);
     let longestNight = userData.map(night => night.hoursSlept)

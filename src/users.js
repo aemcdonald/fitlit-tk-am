@@ -2,6 +2,7 @@ class User {
   constructor(user) {
     this.user = user;
   }
+  
   getFirstName() {
     let fullNames = this.user.name.split(' ');
     return fullNames[0];

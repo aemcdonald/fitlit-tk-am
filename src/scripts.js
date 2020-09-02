@@ -84,7 +84,7 @@ function mostRecentDay(dataSet) {
 // }
 
 function displayUserGreeting() {
-  userGreeting.innerText = `Hi, ${currentUser.getFirstName()}!`;
+  userGreeting.innerText = `Hi, ${currentUser.getFirstName()}`;
 };
 
 function displayWaterToday(id, date) {
@@ -150,7 +150,15 @@ let waterGraph = new Chart(waterChart, {
     labels: hydration.getMostRecentWeek(),
     datasets: [ {
       data: hydration.fluidOuncesWeek(currentUser.user.id),
-      backgroundColor: []
+      backgroundColor: [
+        'rgb(117, 250, 210)',
+        'rgb(221, 144, 54)',
+        'rgb(25, 211, 236)',
+        'rgb(210, 96, 94)',
+        'rgb(236, 117, 246)',
+        'rgb(168, 245, 108)',
+        'rgb(255, 247, 56)'
+      ]
     }],
   },
   options: {
@@ -166,7 +174,15 @@ let weeklyHrsSleptGraph = new Chart(weeklySleepChart, {
     labels: sleep.getMostRecentWeek(),
     datasets: [ {
       data: sleep.dailySleepPerWeek(currentUser.user.id, mostRecentDay(sleepData)),
-      backgroundColor: []
+      backgroundColor: [
+        'rgb(117, 250, 210)',
+        'rgb(221, 144, 54)',
+        'rgb(25, 211, 236)',
+        'rgb(210, 96, 94)',
+        'rgb(236, 117, 246)',
+        'rgb(168, 245, 108)',
+        'rgb(255, 247, 56)'
+      ]
     }],
   },
   options: {
@@ -182,7 +198,15 @@ let weeklySleepQualityGraph = new Chart(weeklySleepQualityChart, {
     labels: sleep.getMostRecentWeek(),
     datasets: [ {
       data: sleep.sleepQualityPerWeek(currentUser.user.id, mostRecentDay(sleepData)),
-      backgroundColor: []
+      backgroundColor: [
+        'rgb(117, 250, 210)',
+        'rgb(221, 144, 54)',
+        'rgb(25, 211, 236)',
+        'rgb(210, 96, 94)',
+        'rgb(236, 117, 246)',
+        'rgb(168, 245, 108)',
+        'rgb(255, 247, 56)'
+      ]
     }],
   },
   options: {

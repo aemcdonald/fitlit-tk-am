@@ -4,13 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="./styles.css">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Arvo&family=Lato:wght@700&display=swap');
+</style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <title>Activity Tracker</title>
 </head>
 
 <body>
   <header>
-    <i>logo</i>
+    <h1 class="font-1">FitLit</h1>
     <h1 class='user-greeting'></h1>
     <div class="user-card">
       <div class="user-name"></div>
@@ -22,51 +25,54 @@
     </div>
   </header>
 
-<section class="main">
-  <section class="hydration">
-    <div class="water-today">
-      <h3>Water Today</h3>
-      <div class="fluid-oz-today"></div>
-    </div>
-    <div class="weekly-water">
-      <h3>Water Consumed Over Past Week</h3>
-      <canvas class='graph' id="water-chart"></canvas>
-    </div>
-  </section>
-  <section class="sleep">
-    <div class="daily-sleep">
-      <div class="hours-slept-day"></div>
-      <div class="sleep-quality-day"></div>
-    </div>
-    <div class="weekly-sleep">
-      <div class="hours-slept-week">
-        <h3>Hours Slept Over Past Week</h3>
-        <canvas class='graph' id="weekly-hrs-slept-chart"></canvas>
+  <section class="main">
+    <section class="hydration">
+      <div class="water-today box">
+        <h3 class='title font-1'>Water Today</h3>
+        <div class="fluid-oz-today font-2"></div>
       </div>
-      <div class="sleep-quality-week">
-        <canvas class='graph' id="weekly-sleep-quality-chart"></canvas>
+      <div class="box">
+        <div class="weekly-water box">
+          <h3 class='title font-1'>Ounces of Water Consumed Over Past Week</h3>
+          <canvas class='graph' id="water-chart"></canvas>
+        </div>
       </div>
-    </div>
-    <div class="all-time-sleep">
-      <div class="avg-hours-sleep"></div>
-      <div class="avg-sleep-quality"></div>
-    </div>
+    </section>
+    <section class="sleep">
+      <div class="daily-sleep box">
+        <div class="hours-slept-day"></div>
+        <div class="sleep-quality-day"></div>
+      </div>
+      <div class="weekly-sleep box">
+        <div class="hours-slept-week box">
+          <h3 class='title font-1'>Hours Slept Over Past Week</h3>
+          <canvas class='graph' id="weekly-hrs-slept-chart"></canvas>
+        </div>
+        <div class="sleep-quality-week box">
+          <h3 class='title font-1'>Sleep Quality Over Past Week</h3>
+          <canvas class='graph' id="weekly-sleep-quality-chart"></canvas>
+        </div>
+      </div>
+      <div class="all-time-sleep box">
+        <div class="avg-hours-sleep"></div>
+        <div class="avg-sleep-quality"></div>
+      </div>
+    </section>
+    <section class="activity">
+      <div class="steps-today box"></div>
+      <div class="active-minutes box"></div>
+      <div class="distance-walked box"></div>
+      <div class="compare-steps box"></div>
+      <div class="compare-stairs box"></div>
+      <div class="compare-minutes-active box"></div>
+      <!-- <canvas id="activity-compare-chart" width="300" height="300"></canvas> -->
+      <div class="weekly-view">
+        <div class="weekly-steps"></div>
+        <div class="weekly-stairs"></div>
+        <div class="weekly-minutes-active"></div>
+      </div>
+    </section>
   </section>
-  <section class="activity">
-    <div class="steps-today"></div>
-    <div class="active-minutes"></div>
-    <div class="distance-walked"></div>
-    <div class="compare-steps"></div>
-    <div class="compare-stairs"></div>
-    <div class="compare-minutes-active"></div>
-    <!-- <canvas id="activity-compare-chart" width="300" height="300"></canvas> -->
-    <div class="weekly-view">
-      <div class="weekly-steps"></div>
-      <div class="weekly-stairs"></div>
-      <div class="weekly-minutes-active"></div>
-    </div>
-  </section>
-</section>
 
   <script type="text/javascript" src="../data/users.js"></script>
   <script type="text/javascript" src="../data/hydration.js"></script>

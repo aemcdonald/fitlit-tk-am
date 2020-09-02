@@ -67,10 +67,13 @@ describe('Sleep', () => {
     }])
   });
 
-  // it('Should return user\'s with an average sleep quality above 3 in a week', () => {
-  //   let goodSleepers = sleep.getQualityAboveThree("2019/06/15", "2019/06/21")
-  //   expect(goodSleepers).to.deep.equal()
-  // })
+  it('Should return user\'s with an average sleep quality above 3 in a week', () => {
+    let goodSleepers = sleep.getQualityAboveThree("2019/06/15", "2019/06/21")
+    expect(goodSleepers).to.deep.equal([
+      { user: '2', sleepQuality: 3.4857142857142853 },
+      { user: '3', sleepQuality: 3.414285714285714 }
+      ])
+  });
 
   it('should find the hours slept of a user\'s longest night of sleep', () => {
     let bestNight = sleep.findLongNightSleep(1);

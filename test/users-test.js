@@ -8,7 +8,6 @@ describe('User', () => {
   it('Should return a user\'s first name', () => {
     let user = new User(userData[0])
     let userName = user.getFirstName();
-
     expect(userName).to.equal('Luisa');
   });
 });
